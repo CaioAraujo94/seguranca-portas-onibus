@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+# arquivos gerados pela simulacao
+demo.mp4
+resultado*.mp4
+resultado_processado.mp4
+demo_portas_onibus.mp4
+*.jsonl
