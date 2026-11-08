@@ -6,11 +6,11 @@ Protótipo em **Python + OpenCV** que monitora a zona da porta de um ônibus com
 
 > ⚠️ \*\*Projeto de estudo e prototipagem.\*\* Não foi certificado nem testado em veículos reais e não deve ser usado como sistema de segurança. A parte do veículo (freio, acelerador, alarme) é lógica simulada.
 
-## 💡 Motivação
+##  Motivação
 
 A ideia nasceu da rotina de quem dirige ônibus: na hora de fechar a porta, o motorista depende do espelho para saber se alguém ficou na borda. O projeto testa como uma câmera pode ajudar nessa decisão, sempre assumindo o pior quando houver dúvida (**fail-safe**).
 
-## ⚙️ Como funciona
+##  Como funciona
 
 ### Zonas monitoradas
 
@@ -52,11 +52,11 @@ O estado só vira `LIVRE` depois de alguns frames seguidos com a zona vazia (`FR
 |\~13 s|Motorista aperta fechar: **aceito**, alarme de 2 s|
 |\~15 s|Porta fecha e, com a câmera confirmando, freio e acelerador são **liberados**|
 
-## 🧰 Tecnologias
+##  Tecnologias
 
 Python 3.8+ · OpenCV · NumPy
 
-## ▶️ Como rodar
+##  Como rodar
 
 ```bash
 git clone https://github.com/<CaioAraujo94>/<seguranca-portas-onibus>.git
@@ -84,7 +84,7 @@ python door\_safety\_system.py video --input meu\_video.mp4 --saida resultado.mp
 
 > O vídeo gerado usa o codec `mp4v`, que pode não abrir em alguns players. Se isso acontecer: `ffmpeg -i demo.mp4 -c:v libx264 -pix\_fmt yuv420p saida.mp4`.
 
-## 🧾 Log de eventos
+##  Log de eventos
 
 Cada decisão é gravada em um arquivo `.jsonl` (um JSON por linha), útil como evidência depois:
 
@@ -96,7 +96,7 @@ Cada decisão é gravada em um arquivo `.jsonl` (um JSON por linha), útil como 
 
 Alguns tipos de evento: `MUDANCA\_ESTADO`, `CONTATO\_BORDA\_DETECTADO`, `COMANDO\_FECHAR\_ACEITO`, `COMANDO\_FECHAR\_NEGADO`, `FECHAMENTO\_CANCELADO`, `REVERSAO\_ANTIPRENSAMENTO`, `PORTA\_FECHADA`, `VEICULO\_BLOQUEADO`, `VEICULO\_LIBERADO`, `ALARME\_SONORO`, `FREIO\_PORTA\_INOPERANTE`.
 
-## 🔧 Parâmetros principais
+##  Parâmetros principais
 
 No início de `door\_safety\_system.py`:
 
@@ -109,7 +109,7 @@ No início de `door\_safety\_system.py`:
 |`FRAMES\_PARA\_LIBERAR\_VEICULO`|6|Confirmação da câmera para liberar freio e acelerador|
 |`LIMIAR\_CONFIANCA\_PESSOA\_HOG`|0,5|Abaixo disso, a detecção vira "objeto incerto" (precisa de calibração)|
 
-## 🚧 Limitações
+##  Limitações
 
 * **Lógica simulada.** Num veículo real, o intertravamento teria de ficar em hardware certificado, independente da câmera.
 * **Áudio simulado:** os alarmes aparecem no log e na tela. A classe `AlarmeSonoro` aceita uma função `tocar\_som` para tocar som de verdade.
@@ -118,7 +118,7 @@ No início de `door\_safety\_system.py`:
 * A parte do HOG precisa do **OpenCV 4.x** (por isso o `requirements.txt` limita a versão).
 * Testado apenas com a simulação sintética.
 
-## 🔮 Próximos passos
+##  Próximos passos
 
 * \[ ] **Watchdog:** bloquear a porta se a câmera parar de enviar atualizações
 * \[ ] **Saúde da câmera:** medir nitidez, brilho e frames repetidos para acionar o fail-safe no modo `video`
@@ -126,7 +126,7 @@ No início de `door\_safety\_system.py`:
 * \[ ] Alarme sonoro real e liberação gradual do freio (subidas)
 * \[ ] Separar o código em módulos (detecção, zonas, decisão, intertravamento) e adicionar testes automatizados
 
-## 👤 Autor
+##  Autor
 
 CaioAraujo · www.linkedin.com/in/caio-henrique-mendes-araujo-1443ba18b
 
